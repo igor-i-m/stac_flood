@@ -1,0 +1,49 @@
+workers: 8
+seed: 666
+gpu: 3
+
+#optuna 
+
+n_trials: 50
+
+#data
+data_path: '/storage1/nerusskikh/drivendata/STAC_flood/data/train_features/'
+labels_path: '/storage1/nerusskikh/drivendata/STAC_flood/data/train_labels/'
+supplementary_data: False
+nfolds: 4
+
+apex: True
+opt_level: 'O2'
+
+#train 
+epochs: 100
+low_lr: 1.0e-6
+high_lr: 1.0e-4
+lr_scheduler: False
+loss_step: 1
+
+smooth_label: False
+labels_smooth_alpha: 0.2
+
+tta: True
+val_bs: 8
+ckpt_path: '/storage1/iigor/drivendata/STAC_flood/checkpoints/'
+ckpt_step: 1
+
+train_val_step: 5
+
+#track 
+save_ckpt: True
+track: True
+neptune_project: 'i-igor/STAC-flood'
+neptune_token: 'eyJhcGlfYWRkcmVzcyI6Imh0dHBzOi8vYXBwLm5lcHR1bmUuYWkiLCJhcGlfdXJsIjoiaHR0cHM6Ly9hcHAubmVwdHVuZS5haSIsImFwaV9rZXkiOiJmNDJiZDQwYy1kNzhhLTRlYWYtYmI0Yy01ZTNhZmM0NDhlY2EifQ=='
+run_tags: 
+#- effnetb2
+#- manet
+- tta
+- augs
+- normalization
+#- supplementary_wo_nasadem
+#- LabelSmooth
+#- CyclicLR
+- Optuna
